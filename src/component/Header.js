@@ -2,16 +2,16 @@ export default function Header() {
     return (
         <div className ="header">
             <h1>
-                <a href="/">무신사</a>
+                <a>토익 영단어</a>
             </h1>
-        <div className = "menu">
-            <a href="#x" className ="link">
-                옷 추가
-            </a>
-            <a href="#x" className ="link">
-                옷 추가
-            </a>
+            <div className = "menu">
+                <a href="#x" className ="link">
+                    단어 추가
+                </a>
+                <a href="#x" className ="link">
+                    Day 추가
+                </a>
+            </div>
         </div>
-    </div>
     )
 }

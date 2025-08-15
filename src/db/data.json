@@ -1,0 +1,718 @@
+{
+  "days": [
+    {
+      "id": 1,
+      "day": 1
+    },
+    {
+      "id": 2,
+      "day": 2
+    },
+    {
+      "id": 3,
+      "day": 3
+    }
+  ],
+  "words": [
+    {
+      "id": 1,
+      "day": 1,
+      "eng": "allocate",
+      "kor": "할당하다",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "day": 1,
+      "eng": "amend",
+      "kor": "수정하다",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "day": 1,
+      "eng": "announce",
+      "kor": "발표하다",
+      "isDone": false
+    },
+    {
+      "id": 4,
+      "day": 1,
+      "eng": "applicant",
+      "kor": "지원자",
+      "isDone": false
+    },
+    {
+      "id": 5,
+      "day": 1,
+      "eng": "appointment",
+      "kor": "약속/임명",
+      "isDone": false
+    },
+    {
+      "id": 6,
+      "day": 1,
+      "eng": "approve",
+      "kor": "승인하다",
+      "isDone": false
+    },
+    {
+      "id": 7,
+      "day": 1,
+      "eng": "assess",
+      "kor": "평가하다",
+      "isDone": false
+    },
+    {
+      "id": 8,
+      "day": 1,
+      "eng": "assign",
+      "kor": "배정하다",
+      "isDone": false
+    },
+    {
+      "id": 9,
+      "day": 1,
+      "eng": "attach",
+      "kor": "첨부하다",
+      "isDone": false
+    },
+    {
+      "id": 10,
+      "day": 1,
+      "eng": "attend",
+      "kor": "참석하다",
+      "isDone": false
+    },
+    {
+      "id": 11,
+      "day": 1,
+      "eng": "audit",
+      "kor": "회계감사/감사하다",
+      "isDone": false
+    },
+    {
+      "id": 12,
+      "day": 1,
+      "eng": "authorize",
+      "kor": "권한을 부여하다",
+      "isDone": false
+    },
+    {
+      "id": 13,
+      "day": 1,
+      "eng": "benefit",
+      "kor": "혜택/이득",
+      "isDone": false
+    },
+    {
+      "id": 14,
+      "day": 1,
+      "eng": "bid",
+      "kor": "입찰/입찰하다",
+      "isDone": false
+    },
+    {
+      "id": 15,
+      "day": 1,
+      "eng": "bonus",
+      "kor": "보너스",
+      "isDone": false
+    },
+    {
+      "id": 16,
+      "day": 1,
+      "eng": "brochure",
+      "kor": "소책자/안내책자",
+      "isDone": false
+    },
+    {
+      "id": 17,
+      "day": 1,
+      "eng": "budget",
+      "kor": "예산",
+      "isDone": false
+    },
+    {
+      "id": 18,
+      "day": 1,
+      "eng": "candidate",
+      "kor": "후보자/지원자",
+      "isDone": false
+    },
+    {
+      "id": 19,
+      "day": 1,
+      "eng": "catalog",
+      "kor": "목록/카탈로그",
+      "isDone": false
+    },
+    {
+      "id": 20,
+      "day": 1,
+      "eng": "client",
+      "kor": "고객",
+      "isDone": false
+    },
+    {
+      "id": 21,
+      "day": 1,
+      "eng": "cooperate",
+      "kor": "협력하다",
+      "isDone": false
+    },
+    {
+      "id": 22,
+      "day": 1,
+      "eng": "comply",
+      "kor": "규정을 준수하다",
+      "isDone": false
+    },
+    {
+      "id": 23,
+      "day": 1,
+      "eng": "conference",
+      "kor": "회의/학회",
+      "isDone": false
+    },
+    {
+      "id": 24,
+      "day": 1,
+      "eng": "confirm",
+      "kor": "확인하다",
+      "isDone": false
+    },
+    {
+      "id": 25,
+      "day": 1,
+      "eng": "consumer",
+      "kor": "소비자",
+      "isDone": false
+    },
+    {
+      "id": 26,
+      "day": 1,
+      "eng": "contract",
+      "kor": "계약/수축하다",
+      "isDone": false
+    },
+    {
+      "id": 27,
+      "day": 1,
+      "eng": "contribute",
+      "kor": "기여하다",
+      "isDone": false
+    },
+    {
+      "id": 28,
+      "day": 1,
+      "eng": "convention",
+      "kor": "관례/대회",
+      "isDone": false
+    },
+    {
+      "id": 29,
+      "day": 1,
+      "eng": "corporate",
+      "kor": "기업의",
+      "isDone": false
+    },
+    {
+      "id": 30,
+      "day": 1,
+      "eng": "criterion",
+      "kor": "기준",
+      "isDone": false
+    },
+    {
+      "id": 31,
+      "day": 1,
+      "eng": "deadline",
+      "kor": "마감기한",
+      "isDone": false
+    },
+    {
+      "id": 32,
+      "day": 1,
+      "eng": "decline",
+      "kor": "감소하다/거절하다",
+      "isDone": false
+    },
+    {
+      "id": 33,
+      "day": 1,
+      "eng": "defect",
+      "kor": "결함",
+      "isDone": false
+    },
+    {
+      "id": 34,
+      "day": 1,
+      "eng": "deficit",
+      "kor": "적자",
+      "isDone": false
+    },
+    {
+      "id": 35,
+      "day": 2,
+      "eng": "delegate",
+      "kor": "대표자/위임하다",
+      "isDone": false
+    },
+    {
+      "id": 36,
+      "day": 2,
+      "eng": "demonstrate",
+      "kor": "입증하다/시연하다",
+      "isDone": false
+    },
+    {
+      "id": 37,
+      "day": 2,
+      "eng": "deposit",
+      "kor": "보증금/예금하다",
+      "isDone": false
+    },
+    {
+      "id": 38,
+      "day": 2,
+      "eng": "designate",
+      "kor": "지정하다",
+      "isDone": false
+    },
+    {
+      "id": 39,
+      "day": 2,
+      "eng": "destination",
+      "kor": "목적지",
+      "isDone": false
+    },
+    {
+      "id": 40,
+      "day": 2,
+      "eng": "dispatch",
+      "kor": "발송하다",
+      "isDone": false
+    },
+    {
+      "id": 41,
+      "day": 2,
+      "eng": "dispute",
+      "kor": "분쟁/이의를 제기하다",
+      "isDone": false
+    },
+    {
+      "id": 42,
+      "day": 2,
+      "eng": "eligible",
+      "kor": "자격이 있는",
+      "isDone": false
+    },
+    {
+      "id": 43,
+      "day": 2,
+      "eng": "enclose",
+      "kor": "동봉하다",
+      "isDone": false
+    },
+    {
+      "id": 44,
+      "day": 2,
+      "eng": "endorse",
+      "kor": "지지하다/배서하다",
+      "isDone": false
+    },
+    {
+      "id": 45,
+      "day": 2,
+      "eng": "enhance",
+      "kor": "강화하다/높이다",
+      "isDone": false
+    },
+    {
+      "id": 46,
+      "day": 2,
+      "eng": "enroll",
+      "kor": "등록하다",
+      "isDone": false
+    },
+    {
+      "id": 47,
+      "day": 2,
+      "eng": "ensure",
+      "kor": "보장하다",
+      "isDone": false
+    },
+    {
+      "id": 48,
+      "day": 2,
+      "eng": "estimate",
+      "kor": "견적/추정하다",
+      "isDone": false
+    },
+    {
+      "id": 49,
+      "day": 2,
+      "eng": "exceed",
+      "kor": "초과하다",
+      "isDone": false
+    },
+    {
+      "id": 50,
+      "day": 2,
+      "eng": "exception",
+      "kor": "예외",
+      "isDone": false
+    },
+    {
+      "id": 51,
+      "day": 2,
+      "eng": "expenditure",
+      "kor": "지출",
+      "isDone": false
+    },
+    {
+      "id": 52,
+      "day": 2,
+      "eng": "expiration",
+      "kor": "만료",
+      "isDone": false
+    },
+    {
+      "id": 53,
+      "day": 2,
+      "eng": "expertise",
+      "kor": "전문지식",
+      "isDone": false
+    },
+    {
+      "id": 54,
+      "day": 2,
+      "eng": "facility",
+      "kor": "시설/편의",
+      "isDone": false
+    },
+    {
+      "id": 55,
+      "day": 2,
+      "eng": "fee",
+      "kor": "수수료/요금",
+      "isDone": false
+    },
+    {
+      "id": 56,
+      "day": 2,
+      "eng": "fund",
+      "kor": "기금/자금을 대다",
+      "isDone": false
+    },
+    {
+      "id": 57,
+      "day": 2,
+      "eng": "guarantee",
+      "kor": "보증하다/보증",
+      "isDone": false
+    },
+    {
+      "id": 58,
+      "day": 2,
+      "eng": "guideline",
+      "kor": "지침",
+      "isDone": false
+    },
+    {
+      "id": 59,
+      "day": 2,
+      "eng": "headquarters",
+      "kor": "본사/본부",
+      "isDone": false
+    },
+    {
+      "id": 60,
+      "day": 2,
+      "eng": "implement",
+      "kor": "시행하다/도구",
+      "isDone": false
+    },
+    {
+      "id": 61,
+      "day": 2,
+      "eng": "incentive",
+      "kor": "유인책/장려금",
+      "isDone": false
+    },
+    {
+      "id": 62,
+      "day": 2,
+      "eng": "incur",
+      "kor": "(비용·손실을) 초래하다",
+      "isDone": false
+    },
+    {
+      "id": 63,
+      "day": 2,
+      "eng": "inventory",
+      "kor": "재고",
+      "isDone": false
+    },
+    {
+      "id": 64,
+      "day": 2,
+      "eng": "invoice",
+      "kor": "송장/청구서",
+      "isDone": false
+    },
+    {
+      "id": 65,
+      "day": 2,
+      "eng": "liability",
+      "kor": "법적 책임/부채",
+      "isDone": false
+    },
+    {
+      "id": 66,
+      "day": 2,
+      "eng": "logistics",
+      "kor": "물류/물류관리",
+      "isDone": false
+    },
+    {
+      "id": 67,
+      "day": 2,
+      "eng": "maintenance",
+      "kor": "유지보수",
+      "isDone": false
+    },
+    {
+      "id": 68,
+      "day": 3,
+      "eng": "merge",
+      "kor": "합병하다",
+      "isDone": false
+    },
+    {
+      "id": 69,
+      "day": 3,
+      "eng": "negotiate",
+      "kor": "협상하다",
+      "isDone": false
+    },
+    {
+      "id": 70,
+      "day": 3,
+      "eng": "obsolete",
+      "kor": "구식의/더 이상 쓰지 않는",
+      "isDone": false
+    },
+    {
+      "id": 71,
+      "day": 3,
+      "eng": "oversee",
+      "kor": "감독하다",
+      "isDone": false
+    },
+    {
+      "id": 72,
+      "day": 3,
+      "eng": "payroll",
+      "kor": "급여명부/급여",
+      "isDone": false
+    },
+    {
+      "id": 73,
+      "day": 3,
+      "eng": "procurement",
+      "kor": "조달",
+      "isDone": false
+    },
+    {
+      "id": 74,
+      "day": 3,
+      "eng": "productivity",
+      "kor": "생산성",
+      "isDone": false
+    },
+    {
+      "id": 75,
+      "day": 3,
+      "eng": "promotion",
+      "kor": "승진/홍보",
+      "isDone": false
+    },
+    {
+      "id": 76,
+      "day": 3,
+      "eng": "prospect",
+      "kor": "전망/유망고객",
+      "isDone": false
+    },
+    {
+      "id": 77,
+      "day": 3,
+      "eng": "prototype",
+      "kor": "시제품/프로토타입",
+      "isDone": false
+    },
+    {
+      "id": 78,
+      "day": 3,
+      "eng": "qualify",
+      "kor": "자격을 갖추다/자격을 주다",
+      "isDone": false
+    },
+    {
+      "id": 79,
+      "day": 3,
+      "eng": "quota",
+      "kor": "할당량",
+      "isDone": false
+    },
+    {
+      "id": 80,
+      "day": 3,
+      "eng": "recruit",
+      "kor": "모집하다/신입사원",
+      "isDone": false
+    },
+    {
+      "id": 81,
+      "day": 3,
+      "eng": "reimbursement",
+      "kor": "상환/비용청구 환급",
+      "isDone": false
+    },
+    {
+      "id": 82,
+      "day": 3,
+      "eng": "reliable",
+      "kor": "신뢰할 수 있는",
+      "isDone": false
+    },
+    {
+      "id": 83,
+      "day": 3,
+      "eng": "relocate",
+      "kor": "이전하다",
+      "isDone": false
+    },
+    {
+      "id": 84,
+      "day": 3,
+      "eng": "renovation",
+      "kor": "보수공사/리모델링",
+      "isDone": false
+    },
+    {
+      "id": 85,
+      "day": 3,
+      "eng": "resignation",
+      "kor": "사직/사직서",
+      "isDone": false
+    },
+    {
+      "id": 86,
+      "day": 3,
+      "eng": "revenue",
+      "kor": "수익",
+      "isDone": false
+    },
+    {
+      "id": 87,
+      "day": 3,
+      "eng": "shipment",
+      "kor": "선적/배송물",
+      "isDone": false
+    },
+    {
+      "id": 88,
+      "day": 3,
+      "eng": "subsidiary",
+      "kor": "자회사/보조의",
+      "isDone": false
+    },
+    {
+      "id": 89,
+      "day": 3,
+      "eng": "supervisor",
+      "kor": "관리자/감독관",
+      "isDone": false
+    },
+    {
+      "id": 90,
+      "day": 3,
+      "eng": "suspend",
+      "kor": "일시중지하다/정직시키다",
+      "isDone": false
+    },
+    {
+      "id": 91,
+      "day": 3,
+      "eng": "tariff",
+      "kor": "관세/요금표",
+      "isDone": false
+    },
+    {
+      "id": 92,
+      "day": 3,
+      "eng": "tenure",
+      "kor": "재임/근속기간",
+      "isDone": false
+    },
+    {
+      "id": 93,
+      "day": 3,
+      "eng": "utility",
+      "kor": "공공요금/유틸리티",
+      "isDone": false
+    },
+    {
+      "id": 94,
+      "day": 3,
+      "eng": "vacancy",
+      "kor": "공석/빈방",
+      "isDone": false
+    },
+    {
+      "id": 95,
+      "day": 3,
+      "eng": "vendor",
+      "kor": "공급업체/노점상",
+      "isDone": false
+    },
+    {
+      "id": 96,
+      "day": 3,
+      "eng": "warranty",
+      "kor": "품질보증",
+      "isDone": false
+    },
+    {
+      "id": 97,
+      "day": 3,
+      "eng": "wholesale",
+      "kor": "도매의/도매로",
+      "isDone": false
+    },
+    {
+      "id": 98,
+      "day": 3,
+      "eng": "withdrawal",
+      "kor": "인출/철회",
+      "isDone": false
+    },
+    {
+      "id": 99,
+      "day": 3,
+      "eng": "workforce",
+      "kor": "노동력/전 직원",
+      "isDone": false
+    },
+    {
+      "id": 100,
+      "day": 3,
+      "eng": "workshop",
+      "kor": "워크숍/실습",
+      "isDone": false
+    }
+  ]
+}
