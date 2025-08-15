@@ -121,7 +121,7 @@
     },
     {
       "id": 16,
-      "day": 1,
+      "day": "1",
       "eng": "brochure",
       "kor": "소책자/안내책자",
       "isDone": false
