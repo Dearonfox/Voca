@@ -19,7 +19,7 @@
       "day": 1,
       "eng": "allocate",
       "kor": "할당하다",
-      "isDone": false
+      "isDone":true
     },
     {
       "id": 2,
