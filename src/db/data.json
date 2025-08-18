@@ -11,16 +11,14 @@
     {
       "id": "3",
       "day": 3
+    },
+    {
+      "id": "ddee",
+      "day": 4,
+      "isDone": false
     }
   ],
   "words": [
-    {
-      "id": "1",
-      "day": 1,
-      "eng": "allocate",
-      "kor": "할당하다",
-      "isDone": true
-    },
     {
       "id": "2",
       "day": 1,
@@ -29,18 +27,11 @@
       "isDone": true
     },
     {
-      "id": "4",
-      "day": 1,
-      "eng": "applicant",
-      "kor": "지원자",
-      "isDone": false
-    },
-    {
       "id": "5",
       "day": 1,
       "eng": "appointment",
       "kor": "약속/임명",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "6",
@@ -474,41 +465,6 @@
       "day": 2,
       "eng": "maintenance",
       "kor": "유지보수",
-      "isDone": false
-    },
-    {
-      "id": "68",
-      "day": 3,
-      "eng": "merge",
-      "kor": "합병하다",
-      "isDone": false
-    },
-    {
-      "id": "69",
-      "day": 3,
-      "eng": "negotiate",
-      "kor": "협상하다",
-      "isDone": false
-    },
-    {
-      "id": "70",
-      "day": 3,
-      "eng": "obsolete",
-      "kor": "구식의/더 이상 쓰지 않는",
-      "isDone": false
-    },
-    {
-      "id": "71",
-      "day": 3,
-      "eng": "oversee",
-      "kor": "감독하다",
-      "isDone": false
-    },
-    {
-      "id": "72",
-      "day": 3,
-      "eng": "payroll",
-      "kor": "급여명부/급여",
       "isDone": false
     },
     {
