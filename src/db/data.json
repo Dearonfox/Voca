@@ -16,6 +16,11 @@
       "id": "ddee",
       "day": 4,
       "isDone": false
+    },
+    {
+      "id": "d859",
+      "day": 5,
+      "isDone": false
     }
   ],
   "words": [
@@ -241,13 +246,6 @@
       "day": 2,
       "eng": "delegate",
       "kor": "대표자/위임하다",
-      "isDone": false
-    },
-    {
-      "id": "36",
-      "day": 2,
-      "eng": "demonstrate",
-      "kor": "입증하다/시연하다",
       "isDone": false
     },
     {
