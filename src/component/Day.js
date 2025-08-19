@@ -23,8 +23,8 @@ export default function Day() {
 
       <table className="word-table">
         <tbody>
-          {words.map(word => (
-            <Word key={word.id} word={w} />
+          {words.map(w => (
+            <Word key={w.id} word={w} />
           ))}
           {!words.length && (
             <tr>
