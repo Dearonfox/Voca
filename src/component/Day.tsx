@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import Word from "./Word"; 
+import Word, {IWord} from "./Word"; 
+import React, { useRef, useState, FormEvent } from "react";
 
 export default function Day() {
-  const { day } = useParams();
-  const days = useFetch("http://localhost:3001/days");
-  const words = useFetch(`http://localhost:3001/words?day=${day}`);
-
+  const { day } = useParams<{day : string}>();
+  const days = useFetch<Array<{ id: number; day: number }>>("http://localhost:3001/days",[]);
+  const words = useFetch<IWord[]>(`http://localhost:3001/words?day=${day}`,[]);
+  
   if (!days.length) return <div>Loading...</div>;
 
   const idx = days.findIndex(d => d.day === Number(day));

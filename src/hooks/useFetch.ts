@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function useFetch(url) {
-    const [data, setData] = useState([]);
-    
+export default function useFetch<T>(url: string, initial: T): T {
+  const [data, setData] = useState<T>(initial);
     useEffect(() => {
             fetch(url)
             .then(res=> {

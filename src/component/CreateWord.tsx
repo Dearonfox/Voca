@@ -1,13 +1,25 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React, { useRef, useState, FormEvent } from "react";
+import { useHistory } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import { use, useRef } from "react";
+import { IDay } from "./DayList";
 export default function CreateWord() {
-    const days = useFetch("http://localhost:3001/days")
+    const days : IDay[] =  useFetch("http://localhost:3001/days",[])
     const history  = useHistory();
+    const [isLoading,setIsLoading] = useState(false);
 
-    function onSubmit(e) {
+    const engRef = useRef<HTMLInputElement>(null);
+    const korRef = useRef<HTMLInputElement>(null);
+    const dayRef = useRef<HTMLSelectElement>(null);
+
+    function onSubmit(e : React.FormEvent) {
         e.preventDefault();
     
+        if (!isLoading && dayRef.current && engRef.current && korRef.current) {
+            setIsLoading(true);
+
+            const day = dayRef.current.value;
+            const eng = engRef.current.value;
+            const kor = korRef.current.value;
 
     fetch(`http://localhost:3001/words/`, {
         method: "POST",
@@ -16,23 +28,21 @@ export default function CreateWord() {
         },
         body : JSON.stringify({
             day : dayRef.current.value,
-            day : dayRef.current.value,
-            day : dayRef.current.value,
+            eng : engRef.current.value,
+            kor : korRef.current.value,
         isDone : false,
         }),
     }).then(res=> {
         if(res.ok) {
             alert("생성이 완료 되었습니다");
-            history.push(`/day/${dayRef.current.value}`);
+            history.push(`/day/${day}`);
         }
     });
     }
+}
 
-    const engRef = useRef(null);
-    const korRef = useRef(null);
-    const dayRef = useRef(null);
     return (
-        <form onSubmit={{onSubmit}}>
+        <form onSubmit={onSubmit}>
             <div className="input_area"> 
                 <label>Eng</label>
                 <input type ="text" placeholder="computer" ref={(engRef)}/>

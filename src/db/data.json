@@ -39,20 +39,6 @@
       "isDone": true
     },
     {
-      "id": "6",
-      "day": 1,
-      "eng": "approve",
-      "kor": "승인하다",
-      "isDone": false
-    },
-    {
-      "id": "7",
-      "day": 1,
-      "eng": "assess",
-      "kor": "평가하다",
-      "isDone": false
-    },
-    {
       "id": "8",
       "day": 1,
       "eng": "assign",

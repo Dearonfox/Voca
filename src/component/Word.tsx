@@ -1,17 +1,31 @@
-import { useState } from 'react';
-export default function Word({word : w}) {
+import React, { useRef, useState, FormEvent } from "react";
+
+interface Iprops {
+    word: IWord;
+}
+export interface IWord {
+    day : string;
+    eng : string;
+    kor : string;
+    isDone: boolean;
+    id : number;
+}
+
+export default function Word({word : w} : Iprops) {
     const [word, setWord] = useState(w);
     const [isShow,setIsShow] = useState(false);
     const [isDone, setIsDone]= useState(word.isDone);
+    
     function toggleShow(){
         setIsShow (!isShow);
     }
+    
     function toggleDone(){
         // setIsDone(!isDone)
         fetch(`http://localhost:3001/words/${word.id}`, {
             method : 'PUT',
             headers : {
-                'Content-Type' : 'applicaton/json',
+                'Content-Type' : 'application/json',
             },
             body : JSON.stringify({
                 ...word,
@@ -31,13 +45,15 @@ export default function Word({word : w}) {
                 method: "DELETE"
             }).then(res => {
                 if(res.ok){
-                    setWord({id : 0 });
+                    setWord({
+                        ...word,
+                        id : 0 });
                 }
             })
         }
     }
 
-    if(word.id==0)
+    if(word.id===0)
     {
         return null;
     }

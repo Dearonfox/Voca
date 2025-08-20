@@ -4,7 +4,6 @@ import Day from "./component/Day"
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import EmptyPage from "./component/EmptyPage";
 import CreateWord from "./component/CreateWord";
-import { useState } from 'react';
 import CreateDay from "./component/CreateDay";
 function App() {
   return (
