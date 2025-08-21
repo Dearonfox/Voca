@@ -1,8 +1,8 @@
 import useFetch from "../hooks/useFetch";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 export default function CreateDay() {
-    const days = useFetch("http://localhost:3001/days");
+    const days = useFetch("http://localhost:3001/days",[]);
     const history = useHistory();
 
     function addDay(){

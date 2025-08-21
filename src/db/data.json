@@ -21,6 +21,11 @@
       "id": "d859",
       "day": 5,
       "isDone": false
+    },
+    {
+      "id": "4a37",
+      "day": 6,
+      "isDone": false
     }
   ],
   "words": [
@@ -29,14 +34,14 @@
       "day": 1,
       "eng": "amend",
       "kor": "수정하다",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "5",
       "day": 1,
       "eng": "appointment",
       "kor": "약속/임명",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "8",
@@ -645,6 +650,20 @@
       "day": 3,
       "eng": "workshop",
       "kor": "워크숍/실습",
+      "isDone": false
+    },
+    {
+      "id": "8a04",
+      "day": "4",
+      "eng": "computer",
+      "kor": "컴퓨터",
+      "isDone": false
+    },
+    {
+      "id": "f0cb",
+      "day": "5",
+      "eng": "assume",
+      "kor": "받아들이다",
       "isDone": false
     }
   ]

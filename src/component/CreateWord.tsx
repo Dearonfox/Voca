@@ -59,9 +59,6 @@ export default function CreateWord() {
                             {day.day}
                         </option>
                     ))}
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
                 </select>
             </div>     
             <button>저장</button>
