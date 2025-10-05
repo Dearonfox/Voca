@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import EmptyPage from "./component/EmptyPage";
 import CreateWord from "./component/CreateWord";
 import CreateDay from "./component/CreateDay";
+import DeleteDay from "./component/DeleteDay";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path ="/create_day">
               <CreateDay />
+            </Route>
+            <Route path = "/delete_day">
+              <DeleteDay />
             </Route>
             <Route>
               <EmptyPage />
