@@ -1,76 +1,93 @@
-import React, { useRef, useState, FormEvent } from "react";
+import { useState } from "react";
+import { apiUrl } from "../api";
+import { WordItem } from "../types";
 
-interface Iprops {
-    word: IWord;
-}
-export interface IWord {
-    day : string;
-    eng : string;
-    kor : string;
-    isDone: boolean;
-    id : number;
+interface WordProps {
+  word: WordItem;
+  onDelete: (id: string) => void;
+  onUpdate: (word: WordItem) => void;
 }
 
-export default function Word({word : w} : Iprops) {
-    const [word, setWord] = useState(w);
-    const [isShow,setIsShow] = useState(false);
-    const [isDone, setIsDone]= useState(word.isDone);
-    
-    function toggleShow(){
-        setIsShow (!isShow);
-    }
-    
-    function toggleDone(){
-        // setIsDone(!isDone)
-        fetch(`http://localhost:3001/words/${word.id}`, {
-            method : 'PUT',
-            headers : {
-                'Content-Type' : 'application/json',
-            },
-            body : JSON.stringify({
-                ...word,
-                isDone : !isDone,
-            }),
-        })
-        .then(res=> {
-            if(res.ok){
-                setIsDone(!isDone);
-            }
-        })
+export default function Word({ word, onDelete, onUpdate }: WordProps) {
+  const [isShow, setIsShow] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  function toggleShow() {
+    setIsShow(!isShow);
+  }
+
+  function toggleDone() {
+    const updatedWord = { ...word, isDone: !word.isDone };
+    setIsSaving(true);
+
+    fetch(apiUrl(`/words/${word.id}`), {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedWord),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("상태 변경에 실패했습니다.");
+        onUpdate(updatedWord);
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+      .finally(() => {
+        setIsSaving(false);
+      });
+  }
+
+  function del() {
+    if (!window.confirm(`${word.eng} 단어를 삭제할까요?`)) {
+      return;
     }
 
-    function del() {
-        if(window.confirm('삭제 하시겠습니까?')){
-            fetch(`http://localhost:3001/words/${word.id}`,{
-                method: "DELETE"
-            }).then(res => {
-                if(res.ok){
-                    setWord({
-                        ...word,
-                        id : 0 });
-                }
-            })
-        }
-    }
+    setIsSaving(true);
 
-    if(word.id===0)
-    {
-        return null;
-    }
-    return( 
-    <tr className={isDone ? "off":""}>
-        <td>
-            <input type = "checkbox" checked = {isDone}
-            onChange = {toggleDone}
-            />
-            
-        </td>
-                <td>{word.eng}</td>
-                <td>{isShow && word.kor}</td>
-                <td>
-                    <button onClick={toggleShow}>뜻 {isShow ? '숨기기' : '보기'} </button>
-                    <button onClick={del} className = "btn_del">삭제</button>
-                </td>
-            </tr>
-        );  
+    fetch(apiUrl(`/words/${word.id}`), {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("삭제에 실패했습니다.");
+        onDelete(word.id);
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+      .finally(() => {
+        setIsSaving(false);
+      });
+  }
+
+  return (
+    <tr className={word.isDone ? "off" : ""}>
+      <td>
+        <input
+          aria-label={`${word.eng} 암기 완료`}
+          type="checkbox"
+          checked={word.isDone}
+          disabled={isSaving}
+          onChange={toggleDone}
+        />
+      </td>
+      <td>
+        <span className="word-eng">{word.eng}</span>
+      </td>
+      <td>
+        <span className={isShow ? "word-kor is-visible" : "word-kor"}>
+          {isShow ? word.kor : "뜻 숨김"}
+        </span>
+      </td>
+      <td>
+        <button className="btn_soft" onClick={toggleShow} disabled={isSaving}>
+          {isShow ? "숨기기" : "뜻 보기"}
+        </button>
+        <button onClick={del} className="btn_del" disabled={isSaving}>
+          삭제
+        </button>
+      </td>
+    </tr>
+  );
 }

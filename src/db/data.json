@@ -31,6 +31,10 @@
       "id": "de79",
       "day": 7,
       "isDone": false
+    },
+    {
+      "day": 8,
+      "id": "wW8elf2"
     }
   ],
   "words": [
@@ -256,13 +260,6 @@
       "day": 2,
       "eng": "designate",
       "kor": "지정하다",
-      "isDone": false
-    },
-    {
-      "id": "39",
-      "day": 2,
-      "eng": "destination",
-      "kor": "목적지",
       "isDone": false
     },
     {

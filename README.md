@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Voca
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+토익 영단어를 Day 단위로 학습하는 React 데모 앱입니다. 단어 목록 조회, 뜻 보기/숨기기, 암기 완료 체크, 단어 추가/삭제, Day 추가/삭제를 지원합니다.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+- React
+- TypeScript
+- React Router v5
+- json-server
+- Create React App
 
-### `npm start`
+## 실행 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+npm run server
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+다른 터미널에서 프론트엔드를 실행합니다.
 
-### `npm test`
+```bash
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Frontend: http://localhost:3000
+- API server: http://localhost:3001
 
-### `npm run build`
+## 환경 변수
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+API 주소를 바꾸고 싶다면 `.env`에 아래 값을 설정합니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+REACT_APP_API_BASE_URL=http://localhost:3001
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 주요 기능
 
-### `npm run eject`
+- Day별 단어 목록 보기
+- 이전/다음 Day 이동
+- 뜻 보기/숨기기
+- 암기 완료 체크
+- 단어 추가 및 삭제
+- Day 추가 및 마지막 Day 삭제
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 데모 한계
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+현재 백엔드는 실제 서버가 아니라 `json-server` 기반 목업 API입니다. 로그인, 사용자별 데이터, 배포용 API, 테스트 코드는 아직 포함되어 있지 않습니다.
