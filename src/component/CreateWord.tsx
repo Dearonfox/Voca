@@ -4,6 +4,9 @@ import { apiUrl } from "../api";
 import useFetch from "../hooks/useFetch";
 import { DayItem } from "../types";
 
+const TRANSLATE_API_URL =
+  process.env.REACT_APP_TRANSLATE_API_URL || "http://localhost:3002/api/translate";
+
 export default function CreateWord() {
   const { data: days, isLoading, error } = useFetch<DayItem[]>(
     apiUrl("/days"),
@@ -13,6 +16,7 @@ export default function CreateWord() {
   const location = useLocation();
   const presetDay = new URLSearchParams(location.search).get("day");
   const [isSaving, setIsSaving] = useState(false);
+  const [isTranslating, setIsTranslating] = useState(false);
 
   const engRef = useRef<HTMLInputElement>(null);
   const korRef = useRef<HTMLInputElement>(null);
@@ -22,6 +26,54 @@ export default function CreateWord() {
     [days]
   );
   const selectedDay = presetDay || String(sortedDays[0]?.day || "");
+
+  async function fillMeaning() {
+    const eng = engRef.current?.value.trim();
+    const currentMeaning = korRef.current?.value.trim();
+
+    if (!eng) {
+      alert("영어 단어를 먼저 입력해 주세요.");
+      engRef.current?.focus();
+      return;
+    }
+
+    if (
+      currentMeaning &&
+      !window.confirm("이미 입력된 뜻이 있습니다. 파파고 번역 결과로 바꿀까요?")
+    ) {
+      return;
+    }
+
+    setIsTranslating(true);
+
+    try {
+      const res = await fetch(TRANSLATE_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: eng }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "뜻을 자동으로 가져오지 못했습니다.");
+      }
+
+      if (!data.meaning) {
+        throw new Error("번역 결과가 비어 있습니다.");
+      }
+
+      if (korRef.current) {
+        korRef.current.value = data.meaning;
+        korRef.current.focus();
+      }
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "뜻 자동 채우기에 실패했습니다.");
+    } finally {
+      setIsTranslating(false);
+    }
+  }
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -76,7 +128,7 @@ export default function CreateWord() {
         <p className="eyebrow">ADD WORD</p>
         <h2>{presetDay ? `Day ${presetDay} 단어 추가` : "단어 추가"}</h2>
         <p className="muted">
-          영어 단어와 한국어 뜻을 입력하면 해당 Day 학습 세트에 바로 반영됩니다.
+          영어 단어를 입력한 뒤 파파고 번역으로 한국어 뜻을 자동 채울 수 있습니다.
         </p>
         {presetDay && (
           <Link to={`/day/${presetDay}`} className="form-close">
@@ -88,9 +140,19 @@ export default function CreateWord() {
         <label>English word</label>
         <input type="text" placeholder="computer" ref={engRef} />
       </div>
-      <div className="input_area">
+      <div className="input_area meaning-area">
         <label>Korean meaning</label>
-        <input type="text" placeholder="컴퓨터" ref={korRef} />
+        <div className="input-with-action">
+          <input type="text" placeholder="컴퓨터" ref={korRef} />
+          <button
+            type="button"
+            className="btn_soft"
+            onClick={fillMeaning}
+            disabled={isSaving || isTranslating}
+          >
+            {isTranslating ? "번역 중..." : "뜻 자동 채우기"}
+          </button>
+        </div>
       </div>
       <div className="input_area">
         <label>Day</label>
@@ -102,7 +164,9 @@ export default function CreateWord() {
           ))}
         </select>
       </div>
-      <button disabled={isSaving}>{isSaving ? "저장 중..." : "단어 저장"}</button>
+      <button disabled={isSaving || isTranslating}>
+        {isSaving ? "저장 중..." : "단어 저장"}
+      </button>
     </form>
   );
 }

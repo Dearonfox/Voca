@@ -9,6 +9,9 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^5.3.4",
@@ -20,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server --watch src/db/data.json --port 3001"
+    "server": "json-server --watch src/db/data.json --port 3001",
+    "translate": "node server/index.js"
   },
   "eslintConfig": {
     "extends": [

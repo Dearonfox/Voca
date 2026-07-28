@@ -667,6 +667,20 @@
       "eng": "assume",
       "kor": "받아들이다",
       "isDone": false
+    },
+    {
+      "day": 8,
+      "eng": "permit",
+      "kor": "허락하다",
+      "isDone": false,
+      "id": "9hZ4cdr"
+    },
+    {
+      "day": 8,
+      "eng": "leak",
+      "kor": "새어나옴",
+      "isDone": false,
+      "id": "fj7vHhY"
     }
   ]
 }

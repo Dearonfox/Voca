@@ -638,6 +638,17 @@ form {
   font-size: 16px;
 }
 
+.input-with-action {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.input-with-action button {
+  min-height: 48px;
+  white-space: nowrap;
+}
+
 .input_area input:focus,
 .input_area select:focus {
   border-color: var(--primary);
@@ -702,6 +713,10 @@ form {
 
   .filter-tabs button {
     flex: 1;
+  }
+
+  .input-with-action {
+    grid-template-columns: 1fr;
   }
 
   .form-head h2 {
