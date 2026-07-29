@@ -65,7 +65,7 @@ export default function Word({ word, onDelete, onUpdate }: WordProps) {
     <tr className={word.isDone ? "off" : ""}>
       <td>
         <input
-          aria-label={`${word.eng} 암기 완료`}
+          aria-label={`${word.eng} 외우기 완료`}
           type="checkbox"
           checked={word.isDone}
           disabled={isSaving}

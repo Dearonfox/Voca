@@ -6,6 +6,7 @@ import EmptyPage from "./component/EmptyPage";
 import CreateWord from "./component/CreateWord";
 import CreateDay from "./component/CreateDay";
 import DeleteDay from "./component/DeleteDay";
+import WordQuiz from "./component/WordQuiz";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,9 @@ function App() {
             </Route>
             <Route exact path ="/day/:day">
               <Day />
+            </Route>
+            <Route exact path ="/quiz/:day">
+              <WordQuiz />
             </Route>
             <Route path ="/create_word">
               <CreateWord />

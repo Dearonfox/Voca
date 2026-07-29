@@ -80,57 +80,78 @@ async function translateWithNaverDevelopers(text, clientId, clientSecret) {
   };
 }
 
+async function translateToKorean(text) {
+  const { clientId, clientSecret } = getPapagoCredentials();
+
+  if (!clientId || !clientSecret) {
+    return {
+      meaning: "",
+      provider: null,
+      attempts: [{ error: "Papago API credentials are missing." }],
+    };
+  }
+
+  const preferredProvider = process.env.PAPAGO_PROVIDER || "auto";
+  const providers =
+    preferredProvider === "naver-cloud"
+      ? [translateWithNaverCloud]
+      : preferredProvider === "naver-developers"
+        ? [translateWithNaverDevelopers]
+        : [translateWithNaverCloud, translateWithNaverDevelopers];
+
+  const attempts = [];
+
+  for (const translate of providers) {
+    const result = await translate(text, clientId, clientSecret);
+    const translatedText = extractTranslatedText(result.data);
+
+    if (result.ok && translatedText) {
+      return {
+        meaning: translatedText,
+        provider: result.provider,
+        attempts,
+      };
+    }
+
+    attempts.push({
+      provider: result.provider,
+      status: result.status,
+      error:
+        result.data?.errorMessage ||
+        result.data?.error?.message ||
+        result.data?.message ||
+        "Papago translation failed.",
+    });
+  }
+
+  return {
+    meaning: "",
+    provider: null,
+    attempts,
+  };
+}
+
 app.post("/api/translate", async (req, res) => {
   try {
     const { text } = req.body;
-    const { clientId, clientSecret } = getPapagoCredentials();
 
     if (!text) {
       return res.status(400).json({ message: "text is required" });
     }
 
-    if (!clientId || !clientSecret) {
-      return res.status(500).json({
-        message: "Papago API credentials are missing.",
-      });
-    }
+    const korean = await translateToKorean(text);
 
-    const preferredProvider = process.env.PAPAGO_PROVIDER || "auto";
-    const providers =
-      preferredProvider === "naver-cloud"
-        ? [translateWithNaverCloud]
-        : preferredProvider === "naver-developers"
-          ? [translateWithNaverDevelopers]
-          : [translateWithNaverCloud, translateWithNaverDevelopers];
-
-    const attempts = [];
-
-    for (const translate of providers) {
-      const result = await translate(text, clientId, clientSecret);
-      const translatedText = extractTranslatedText(result.data);
-
-      if (result.ok && translatedText) {
-        return res.json({
-          meaning: translatedText,
-          provider: result.provider,
-        });
-      }
-
-      attempts.push({
-        provider: result.provider,
-        status: result.status,
-        error:
-          result.data?.errorMessage ||
-          result.data?.error?.message ||
-          result.data?.message ||
-          "Papago translation failed.",
+    if (korean.meaning) {
+      return res.json({
+        meaning: korean.meaning,
+        provider: korean.provider,
       });
     }
 
     res.status(401).json({
       message:
-        "Papago 인증에 실패했습니다. 네이버 클라우드 또는 네이버 개발자센터의 Client ID/Secret과 Papago 권한 설정을 확인해 주세요.",
-      attempts,
+        "Papago 인증에 실패했습니다. 네이버 클라우드의 Client ID/Secret과 Papago 권한 설정을 확인해 주세요.",
+      attempts: korean.attempts,
     });
   } catch (error) {
     res.status(500).json({

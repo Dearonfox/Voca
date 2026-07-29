@@ -5,7 +5,8 @@ import useFetch from "../hooks/useFetch";
 import { DayItem } from "../types";
 
 const TRANSLATE_API_URL =
-  process.env.REACT_APP_TRANSLATE_API_URL || "http://localhost:3002/api/translate";
+  process.env.REACT_APP_TRANSLATE_API_URL ||
+  "http://localhost:3002/api/translate";
 
 export default function CreateWord() {
   const { data: days, isLoading, error } = useFetch<DayItem[]>(
@@ -39,7 +40,7 @@ export default function CreateWord() {
 
     if (
       currentMeaning &&
-      !window.confirm("이미 입력된 뜻이 있습니다. 파파고 번역 결과로 바꿀까요?")
+      !window.confirm("이미 입력한 뜻이 있습니다. Papago 번역 결과로 바꿀까요?")
     ) {
       return;
     }
@@ -69,7 +70,11 @@ export default function CreateWord() {
         korRef.current.focus();
       }
     } catch (err) {
-      alert(err instanceof Error ? err.message : "뜻 자동 채우기에 실패했습니다.");
+      alert(
+        err instanceof Error
+          ? err.message
+          : "뜻 자동 채우기에 실패했습니다."
+      );
     } finally {
       setIsTranslating(false);
     }
@@ -128,7 +133,8 @@ export default function CreateWord() {
         <p className="eyebrow">ADD WORD</p>
         <h2>{presetDay ? `Day ${presetDay} 단어 추가` : "단어 추가"}</h2>
         <p className="muted">
-          영어 단어를 입력한 뒤 파파고 번역으로 한국어 뜻을 자동 채울 수 있습니다.
+          영어 단어를 입력한 뒤 Papago 번역으로 한국어 뜻을 자동으로 채울 수
+          있습니다.
         </p>
         {presetDay && (
           <Link to={`/day/${presetDay}`} className="form-close">

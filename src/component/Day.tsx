@@ -37,7 +37,11 @@ export default function Day() {
   }
 
   if (daysError || wordsError) {
-    return <p className="center muted">데이터를 불러오지 못했습니다. 서버 상태를 확인해 주세요.</p>;
+    return (
+      <p className="center muted">
+        데이터를 불러오지 못했습니다. 서버 상태를 확인해 주세요.
+      </p>
+    );
   }
 
   const idx = sortedDays.findIndex((d) => d.day === Number(day));
@@ -81,9 +85,16 @@ export default function Day() {
           <p className="muted">
             {doneCount}/{words.length} 단어 완료 · {remainingCount}개 남음
           </p>
-          <Link className="day-add-link" to={`/create_word?day=${day}`}>
-            이 Day에 단어 추가
-          </Link>
+          <div className="day-actions">
+            <Link className="day-add-link" to={`/create_word?day=${day}`}>
+              이 Day에 단어 추가
+            </Link>
+            {remainingCount > 0 && (
+              <Link className="day-quiz-link" to={`/quiz/${day}`}>
+                시험 보기
+              </Link>
+            )}
+          </div>
         </div>
         <div className="day-progress">
           <strong>{progress}%</strong>
@@ -122,20 +133,23 @@ export default function Day() {
             placeholder="영어 또는 뜻 검색"
           />
         </label>
-        <div className="filter-tabs" aria-label="암기 상태 필터">
+        <div className="filter-tabs" aria-label="외우기 상태 필터">
           <button
+            type="button"
             className={filter === "all" ? "is-active" : ""}
             onClick={() => setFilter("all")}
           >
             전체
           </button>
           <button
+            type="button"
             className={filter === "active" ? "is-active" : ""}
             onClick={() => setFilter("active")}
           >
             미완료
           </button>
           <button
+            type="button"
             className={filter === "done" ? "is-active" : ""}
             onClick={() => setFilter("done")}
           >
@@ -160,10 +174,14 @@ export default function Day() {
       ) : (
         <section className="empty-state">
           <p className="eyebrow">EMPTY SET</p>
-          <h3>{words.length ? "조건에 맞는 단어가 없습니다." : "아직 단어가 없습니다."}</h3>
+          <h3>
+            {words.length
+              ? "조건에 맞는 단어가 없습니다."
+              : "아직 단어가 없습니다."}
+          </h3>
           <p>
             {words.length
-              ? "검색어나 필터를 바꿔 다시 확인해 보세요."
+              ? "검색어와 필터를 바꿔 다시 확인해 보세요."
               : "이 Day에 첫 단어를 추가해서 학습 세트를 시작하세요."}
           </p>
           {!words.length && (
