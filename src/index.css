@@ -713,6 +713,27 @@ form {
   box-shadow: 0 0 0 4px var(--ring);
 }
 
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-day-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0 16px;
+  color: var(--primary);
+  background: var(--surface-strong);
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .lookup-status,
 .lookup-error {
   margin: -4px 0 16px;

@@ -1,5 +1,5 @@
-import { FormEvent, useMemo, useRef, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { FormEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { apiUrl } from "../api";
 import useFetch from "../hooks/useFetch";
 import { DayItem } from "../types";
@@ -13,20 +13,19 @@ export default function CreateWord() {
     apiUrl("/days"),
     []
   );
-  const history = useHistory();
   const location = useLocation();
   const presetDay = new URLSearchParams(location.search).get("day");
   const [isSaving, setIsSaving] = useState(false);
   const [isTranslating, setIsTranslating] = useState(false);
+  const [selectedDay, setSelectedDay] = useState("");
 
   const engRef = useRef<HTMLInputElement>(null);
   const korRef = useRef<HTMLInputElement>(null);
-  const dayRef = useRef<HTMLSelectElement>(null);
   const sortedDays = useMemo(
     () => [...days].sort((a, b) => a.day - b.day),
     [days]
   );
-  const selectedDay = presetDay || String(sortedDays[0]?.day || "");
+  const currentDay = presetDay || selectedDay || String(sortedDays[0]?.day || "");
 
   async function fillMeaning() {
     const eng = engRef.current?.value.trim();
@@ -80,14 +79,26 @@ export default function CreateWord() {
     }
   }
 
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
-
-    if (isSaving || !dayRef.current || !engRef.current || !korRef.current) {
+  function onEnglishKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Enter" || e.nativeEvent.isComposing) {
       return;
     }
 
-    const day = Number(presetDay || dayRef.current.value);
+    e.preventDefault();
+
+    if (!isSaving && !isTranslating) {
+      fillMeaning();
+    }
+  }
+
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    if (isSaving || !engRef.current || !korRef.current || !currentDay) {
+      return;
+    }
+
+    const day = Number(currentDay);
     const eng = engRef.current.value.trim();
     const kor = korRef.current.value.trim();
 
@@ -114,7 +125,15 @@ export default function CreateWord() {
         if (!res.ok) throw new Error("단어 생성에 실패했습니다.");
 
         alert("단어가 추가되었습니다.");
-        history.push(`/day/${day}`);
+
+        if (engRef.current) {
+          engRef.current.value = "";
+          engRef.current.focus();
+        }
+
+        if (korRef.current) {
+          korRef.current.value = "";
+        }
       })
       .catch((err) => {
         alert(err.message);
@@ -124,32 +143,38 @@ export default function CreateWord() {
       });
   }
 
-  if (isLoading) return <p className="center muted">Day 목록을 불러오는 중...</p>;
-  if (error) return <p className="center muted">Day 목록을 불러오지 못했습니다.</p>;
+  if (isLoading) {
+    return <p className="center muted">Day 목록을 불러오는 중...</p>;
+  }
+
+  if (error) {
+    return <p className="center muted">Day 목록을 불러오지 못했습니다.</p>;
+  }
 
   return (
     <form className="word-form" onSubmit={onSubmit}>
       <div className="form-head">
         <p className="eyebrow">ADD WORD</p>
-        <h2>{presetDay ? `Day ${presetDay} 단어 추가` : "단어 추가"}</h2>
+        <h2>{currentDay ? `Day ${currentDay} 단어 추가` : "단어 추가"}</h2>
         <p className="muted">
-          영어 단어를 입력한 뒤 Papago 번역으로 한국어 뜻을 자동으로 채울 수
-          있습니다.
+          영어 단어를 입력한 뒤 Papago 번역으로 한국어 뜻을 자동으로 채울 수 있습니다.
         </p>
         {presetDay && (
           <Link to={`/day/${presetDay}`} className="form-close">
-            돌아가기
+            Day로 이동
           </Link>
         )}
       </div>
+
       <div className="input_area">
         <label>English word</label>
-        <input type="text" placeholder="computer" ref={engRef} />
-      </div>
-      <div className="input_area meaning-area">
-        <label>Korean meaning</label>
         <div className="input-with-action">
-          <input type="text" placeholder="컴퓨터" ref={korRef} />
+          <input
+            type="text"
+            placeholder="computer"
+            ref={engRef}
+            onKeyDown={onEnglishKeyDown}
+          />
           <button
             type="button"
             className="btn_soft"
@@ -160,9 +185,19 @@ export default function CreateWord() {
           </button>
         </div>
       </div>
+
+      <div className="input_area meaning-area">
+        <label>Korean meaning</label>
+        <input type="text" placeholder="컴퓨터" ref={korRef} />
+      </div>
+
       <div className="input_area">
         <label>Day</label>
-        <select ref={dayRef} defaultValue={selectedDay} disabled={Boolean(presetDay)}>
+        <select
+          value={currentDay}
+          disabled={Boolean(presetDay)}
+          onChange={(e) => setSelectedDay(e.target.value)}
+        >
           {sortedDays.map((day) => (
             <option key={day.id} value={day.day}>
               Day {day.day}
@@ -170,9 +205,17 @@ export default function CreateWord() {
           ))}
         </select>
       </div>
-      <button disabled={isSaving || isTranslating}>
-        {isSaving ? "저장 중..." : "단어 저장"}
-      </button>
+
+      <div className="form-actions">
+        <button type="submit" disabled={isSaving || isTranslating}>
+          {isSaving ? "저장 중..." : "단어 저장"}
+        </button>
+        {currentDay && (
+          <Link to={`/day/${currentDay}`} className="form-day-link">
+            Day {currentDay}로 이동
+          </Link>
+        )}
+      </div>
     </form>
   );
 }
