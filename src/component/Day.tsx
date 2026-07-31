@@ -45,7 +45,9 @@ export default function Day() {
   }
 
   const idx = sortedDays.findIndex((d) => d.day === Number(day));
-  if (idx === -1) return <p className="center muted">존재하지 않는 Day입니다.</p>;
+  if (idx === -1) {
+    return <p className="center muted">존재하지 않는 Day입니다.</p>;
+  }
 
   const prevDay = idx > 0 ? sortedDays[idx - 1].day : null;
   const nextDay = idx < sortedDays.length - 1 ? sortedDays[idx + 1].day : null;
@@ -83,15 +85,15 @@ export default function Day() {
           <p className="eyebrow">WORD TRAINING</p>
           <h2>Day {day}</h2>
           <p className="muted">
-            {doneCount}/{words.length} 단어 완료 · {remainingCount}개 남음
+            {doneCount}/{words.length} 단어 완료, {remainingCount}개 남음
           </p>
           <div className="day-actions">
             <Link className="day-add-link" to={`/create_word?day=${day}`}>
               이 Day에 단어 추가
             </Link>
-            {remainingCount > 0 && (
-              <Link className="day-quiz-link" to={`/quiz/${day}`}>
-                시험 보기
+            {words.length > 0 && (
+              <Link className="day-quiz-link" to={`/paper-test/${day}`}>
+                쪽지시험
               </Link>
             )}
           </div>
